@@ -1,0 +1,33 @@
+
+@mixin rec($color:green, $width:100px, $heigth:100px) {
+    background-color: $color;
+    width: $width;
+    height: $heigth;
+}
+
+$color: #333333;
+$colors:(#333, #444, #555, #666);
+@debug $colors;
+@for $i from 1 through 6 {
+
+    @if($i % 2 == 1)
+    {
+        $color:nth($colors, 1);
+    }
+    @else
+    {
+        $color:nth($colors, 2);
+    }
+
+
+    #rec#{$i}{
+        @include rec($color);
+    }
+}
+
+// @each $color in $colors {
+//     $i:index($colors , $color);
+//     #rec#{$i}{
+//         @include rec($color, $i * 241px, $i * 10px);
+//     }
+// }
